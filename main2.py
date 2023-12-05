@@ -51,8 +51,8 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    photodir = args.photos
-    backupdir = args.backup
+    photodir = args.photodir
+    backupdir = args.backupdir
 
     backup_exported_photos(photodir, backupdir)
 
