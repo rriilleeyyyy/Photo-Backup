@@ -19,6 +19,7 @@ def backup_exported_photos(photos, backup):
             # Check if "Upload" subdirectory exists within "Export"
             upload_folder = os.path.join(root, "Upload")
             if os.path.exists(upload_folder):
+                # If Upload folder exists, only copy files from it
                 for file in os.listdir(upload_folder):
                     if file.endswith(".jpg"):
                         source_file = os.path.join(upload_folder, file)
@@ -27,16 +28,16 @@ def backup_exported_photos(photos, backup):
                             shutil.copy2(source_file, destination_file)
                             moved_file_count += 1
                             print("Total moved or changed files:", moved_file_count, destination_file)
-
-            # Copy other .jpg files from the Export folder (excluding "Upload" folder contents)
-            for file in files:
-                if file.endswith(".jpg") and not root.endswith("Upload"):
-                    source_file = os.path.join(root, file)
-                    destination_file = os.path.join(backup_folder, file)
-                    if not os.path.exists(destination_file) or needs_update(source_file, destination_file):
-                        shutil.copy2(source_file, destination_file)
-                        moved_file_count += 1
-                        print("Total moved or changed files:", moved_file_count, destination_file)
+            else:
+                # If no Upload folder, copy .jpg files from the Export folder
+                for file in files:
+                    if file.endswith(".jpg"):
+                        source_file = os.path.join(root, file)
+                        destination_file = os.path.join(backup_folder, file)
+                        if not os.path.exists(destination_file) or needs_update(source_file, destination_file):
+                            shutil.copy2(source_file, destination_file)
+                            moved_file_count += 1
+                            print("Total moved or changed files:", moved_file_count, destination_file)
 
 def needs_update(source_file, destination_file):
     source_hash = generate_md5_hash(source_file)
@@ -52,14 +53,14 @@ def generate_md5_hash(filename):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Backup exported photos from a photo folder to a backup location")
-    parser.add_argument("--photodir", type=str, required=True, help="Path to the photo folder")
-    parser.add_argument("--backupdir", type=str, required=True, help="Path to the backup location")
+    parser.add_argument("--sourceDir", type=str, required=True, help="Path to the photo folder")
+    parser.add_argument("--destDir", type=str, required=True, help="Path to the backup location")
 
     args = parser.parse_args()
 
-    photodir = args.photodir
-    backupdir = args.backupdir
+    sourceDir = args.sourceDir
+    destDir = args.destDir
 
-    backup_exported_photos(photodir, backupdir)
+    backup_exported_photos(sourceDir, destDir)
 
     print("Total moved or changed files:", moved_file_count)
