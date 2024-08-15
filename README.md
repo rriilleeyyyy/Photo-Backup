@@ -8,34 +8,33 @@ Source Directories:
 
 Photos/
 ├── Jerry/
-│   └── Export/
-│       ├── Upload/
-│       │   ├── Photo1.jpg
-│       │   ├── Photo2.jpg
-│       ├── Photo3.jpg
-│       └── Photo4.jpg
+│ └── Export/
+│ ├── Upload/
+│ │ ├── Photo1.jpg
+│ │ ├── Photo2.jpg
+│ ├── Photo3.jpg
+│ └── Photo4.jpg
 ├── Liam/
-│   └── Export/
-│       ├── Image1.jpg
-│       ├── Image2.jpg
-│       └── Image3.jpg
+│ └── Export/
+│ ├── Image1.jpg
+│ ├── Image2.jpg
+│ └── Image3.jpg
 ├── Riley/
-│   └── Export/
-│       └── Pic1.jpg
+│ └── Export/
+│ └── Pic1.jpg
 
 Destination Directories:
 
 Destination/
 ├── Jerry/
-│   ├── Photo1.jpg
-│   ├── Photo2.jpg
+│ ├── Photo1.jpg
+│ ├── Photo2.jpg
 ├── Liam/
-│   ├── Image1.jpg
-│   ├── Image2.jpg
-│   └── Image3.jpg
+│ ├── Image1.jpg
+│ ├── Image2.jpg
+│ └── Image3.jpg
 ├── Riley/
-│   └── Pic1.jpg
-
+│ └── Pic1.jpg
 
 So if an upload folder exists within export, it will only take those, otherwise it will take all images from export. 
 
