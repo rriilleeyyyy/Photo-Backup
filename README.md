@@ -39,8 +39,9 @@ Destination/
 So if an upload folder exists within export, it will only take those, otherwise it will take all images from export. 
 
 If your photo directory doesnt look like this, it shouldn't work, but feel free to change it to whatever you need!
-
-USAGE: python3 PhotoBackup.py ----sourceDir "source/folder/directory" --destDir "/destination/of/backup/or/upload"
-
+```
+USAGE:
+python3 PhotoBackup.py ----sourceDir "source/folder/directory" --destDir "/destination/of/backup/or/upload"
+```
 
 This can then be piped for Google Drive Uploading, and can be run on a chron schedule. 
